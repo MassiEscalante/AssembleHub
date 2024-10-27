@@ -45,11 +45,15 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       tableName: 'users',
       sequelize,
       hooks: {
+        // **Hash password on user creation**
         beforeCreate: async (user: User) => {
           await user.setPassword(user.password);
         },
+        // **Hash password on user update if changed**
         beforeUpdate: async (user: User) => {
-          await user.setPassword(user.password);
+          if (user.changed('password')) {
+            await user.setPassword(user.password);
+          }
         },
       }
     }
