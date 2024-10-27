@@ -6,8 +6,9 @@ export const authenticateToken = (req, res, next) => {
     // **Get token from Authorization header**
     const token = req.headers.authorization?.split(' ')[1];
     // **Return error if token is missing**
-    if (!token)
+    if (!token) {
         return res.status(401).json({ message: 'Access denied' });
+    }
     try {
         // **Verify token and attach user info to request**
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
@@ -16,6 +17,6 @@ export const authenticateToken = (req, res, next) => {
     }
     catch (error) {
         // **Return error if token is invalid or expired**
-        res.status(403).json({ message: 'Invalid or expired token' });
+        return res.status(403).json({ message: 'Invalid or expired token' });
     }
 };

@@ -14,10 +14,11 @@ export const login = async (req, res) => {
             return res.json({ token });
         }
         // **Return error if credentials are incorrect**
-        res.status(401).json({ message: 'Invalid username or password' });
+        return res.status(401).json({ message: 'Invalid username or password' });
     }
     catch (error) {
-        res.status(500).json({ message: error.message });
+        // **Return error if server encounters an issue**
+        return res.status(500).json({ message: error.message });
     }
 };
 const router = Router();
