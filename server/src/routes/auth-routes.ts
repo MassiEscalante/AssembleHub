@@ -4,7 +4,7 @@ import { User } from '../models/user.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 
-export const login = async (req: Request, res: Response) => {
+export const login = async (req: Request, res: Response): Promise<Response> => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ where: { username } });
@@ -21,9 +21,10 @@ export const login = async (req: Request, res: Response) => {
     }
     
     // **Return error if credentials are incorrect**
-    res.status(401).json({ message: 'Invalid username or password' });
+    return res.status(401).json({ message: 'Invalid username or password' });
   } catch (error: any) {
-    res.status(500).json({ message: error.message });
+    // **Return error if server encounters an issue**
+    return res.status(500).json({ message: error.message });
   }
 };
 
