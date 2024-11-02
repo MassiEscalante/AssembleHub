@@ -100,9 +100,10 @@ tbody tr:nth-child(odd) {
 }
 
 .nav-title a {
-  color: var(--highlight-color);
+  color: #feb47b;
+  font-weight: 900;
   font-size: 1.5em;
-  font-weight: 700;
+  animation: fallAndBounce 1.2s ease-out; /* Adds the falling and landing effect */
 }
 
 .nav ul {
@@ -174,20 +175,8 @@ tbody tr:nth-child(odd) {
   font-size: 1.25em;
 }
 
-.todo {
-  background-color: #a9c4af; 
-}
-
-.inprogress {
-  background-color: #a9c4af; 
-}
-
-.done {
-  background-color: #a9c4af; 
-}
 
 .ticket-card {
-  background-color: var(--bg-color);
   border: 1px solid var(--highlight-color);
   border-radius: 8px;
   padding: 1em;
@@ -265,24 +254,22 @@ tbody tr:nth-child(odd) {
 
 
 
-.editBtn {
-  background-color: #f9f9f9;
+.editBtn, .deleteBtn {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 0.6em 1.2em;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
   cursor: pointer;
   transition: border-color 0.25s;
 }
 
-.deleteBtn {
-  background-color: #f9f9f9;
-  font-weight: 500;
-  color: black;
-  text-decoration: inherit;
+.editBtn:hover {
+  border-color: #646cff;
 }
 
 .deleteBtn:hover {
-  color: #535bf2;
+  border-color: red;
 }
 
 .login-notice {
@@ -292,6 +279,12 @@ tbody tr:nth-child(odd) {
   justify-content: center;
 }
 
+@keyframes fallAndBounce {
+  0% { transform: translateY(-100px); opacity: 0; } /* Starts above the page */
+  60% { transform: translateY(10px); opacity: 1; } /* Falls and overshoots slightly */
+  80% { transform: translateY(-5px); } /* Bounces upward */
+  100% { transform: translateY(0); } /* Settles into final position */
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
