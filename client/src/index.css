@@ -159,6 +159,29 @@ tbody tr:nth-child(odd) {
   background-color: var(--bg-color);
 }
 
+/* Style for the sort dropdown */
+.board-controls select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 2px solid #D4AF37; /* Gold border for a luxury look */
+  border-radius: 6px;
+  background-color: rgb(39, 36, 36); /* Light background */
+  color: #f8f3f3;
+  transition: all 0.3s ease;
+  outline: none;
+  cursor: pointer;
+  margin-left: 1em;
+}
+
+.board-controls select:hover {
+  background-color: rgb(39, 36, 36); /* Slightly darker on hover */
+  border-color: #b08a30; /* Darker gold border on hover */
+}
+
+.board-controls select:focus {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow on focus */
+}
+
 .swim-lane {
   width: 32%;
   background-color: var(--card-bg);
