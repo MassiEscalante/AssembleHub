@@ -12,7 +12,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
       // Log before checking the password to see if comparison succeeds
       console.log("User found, comparing passwords...");
       const passwordMatch = await bcrypt.compare(password, user.password);
-      console.log("Password match:", passwordMatch);
+      console.log("Password comparison result:", passwordMatch);
 
       if (passwordMatch) {
         const token = jwt.sign(
