@@ -24,6 +24,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     return res.status(401).json({ message: 'Invalid username or password' });
   } catch (error: any) {
     // **Return error if server encounters an issue**
+    console.error("Login error:", error); // Log the error
     return res.status(500).json({ message: error.message });
   }
 };
