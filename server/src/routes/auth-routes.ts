@@ -11,6 +11,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     
     // TODO: If the user exists and the password is correct, return a JWT token
     // **Updated: Check user and generate JWT if credentials are correct**
+    console.log("User found, comparing passwords...");
     if (user && await bcrypt.compare(password, user.password)) {
       const token = jwt.sign(
         { id: user.id, username: user.username },
