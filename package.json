@@ -1,5 +1,5 @@
 {
-  "name": "main",
+  "name": "assemblehub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "render-build": "npm install && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Massiel Escalante",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.2",
