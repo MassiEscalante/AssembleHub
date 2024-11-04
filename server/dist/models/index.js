@@ -9,10 +9,9 @@ console.log('Database Config:', {
     DB_USER: process.env.DB_USER,
     DB_PASSWORD: typeof process.env.DB_PASSWORD, // Check if password is read as a string
 });
-const sequelize = process.env.DB_URL
-    ? new Sequelize(process.env.DB_URL)
-    : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', String(process.env.DB_PASSWORD), // Ensure password is treated as a string
-    {
+const sequelize = process.env.DATABASE_URL
+    ? new Sequelize(process.env.DATABASE_URL)
+    : new Sequelize(process.env.DB_NAME || '', process.env.DB_USER || '', String(process.env.DB_PASSWORD), {
         host: 'localhost',
         dialect: 'postgres',
         dialectOptions: {
