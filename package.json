@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
+"scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run client:build && npm run server",
+    "start": "npm run seed && npm run client:build && npm run server",
     "start:dev": "concurrently \"npm run server:dev\" \"wait-on tcp:3001 && npm run client:dev\"",
     "server": "cd server && npm start",
     "server:dev": "cd server && npm run dev",
@@ -13,9 +13,9 @@
     "client:build": "cd client && npm run build",
     "client:dev": "cd client && npm run dev",
     "build": "cd client && npm run build",
-    "seed": "cd server && npm run seed",
+    "seed": "cd server && node dist/seeds/user-seeds.js",
     "render-build": "npm install && npm run build"
-  },
+},
   "keywords": [],
   "author": "Massiel Escalante",
   "license": "ISC",
