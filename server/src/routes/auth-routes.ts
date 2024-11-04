@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { User } from '../models/user.js';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 export const login = async (req: Request, res: Response): Promise<Response> => {
   const { username, password } = req.body;
@@ -8,10 +9,12 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     const user = await User.findOne({ where: { username } });
 
     if (user) {
-      // Temporarily bypass bcrypt for testing
-      console.log("User found, performing plaintext password comparison...");
-      const passwordMatch = password === "password";  // Replace with the actual password for `JollyGuru`
-      console.log("Temporary password comparison result:", passwordMatch);
+      // Log before checking the password to see if comparison succeeds
+      console.log("User found, comparing passwords...");
+      
+      // Revert to bcrypt comparison
+      const passwordMatch = await bcrypt.compare(password, user.password);
+      console.log("Password comparison result with bcrypt:", passwordMatch);
 
       if (passwordMatch) {
         const token = jwt.sign(
